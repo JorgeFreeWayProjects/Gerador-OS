@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de OS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #006AA9;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .container {
+            display: flex;
+            gap: 20px;
+            width: 100%;
+            max-width: 900px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-sizing: border-box;
+        }
+        .col-left, .col-right {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        h2 {
+            text-align: center;
+            color: #333333;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        .form-row {
+            display: flex;
+            gap: 10px;
+        }
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        input[type="text"], input[type="date"], textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #cccccc;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+        .half-width {
+            flex: 0.5;
+        }
+        .clear-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .clear-button {
+            padding: 8px 16px;
+            background-color: #d9534f;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        textarea {
+            resize: vertical;
+            min-height: 50px;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+        .button-group {
+            display: flex;
+            gap: 10px;
+        }
+        .button-option {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            background-color: #e0e0e0;
+            color: #333;
+            transition: background-color 0.3s ease;
+            font-size: 14px;
+        }
+        .button-option.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        button {
+            flex: 1;
+            padding: 12px;
+            color: white;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #output {
+            padding: 15px;
+            border: 1px solid #cccccc;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            white-space: pre-wrap; /* Quebra de linha automática */
+            overflow-y: auto; /* Permite rolagem vertical caso o conteúdo seja maior */
+            max-width: 100%; /* Garante que o campo não exceda a largura disponível */
+            width: 100%; /* Usa toda a largura disponível na coluna */
+            box-sizing: border-box;
+            word-wrap: break-word; /* Quebra linhas em palavras longas */
+            height: 200px; /* Altura fixa para não estender verticalmente */
+        }
+
+        #popupMessage {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 4px;
+            display: none;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="col-left">
+            <h2>Gerador de OS</h2>
+            
+            <div class="clear-row">
+                <div class="form-group" style="flex: 1;">
+                    <label for="colaborador">Colaborador:</label>
+                    <input type="text" id="colaborador" placeholder="Insira seu nome">
+                </div>
+                <button class="clear-button" onclick="clearFields()">Limpar Campos</button>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group half-width">
+                    <label for="abertura">ABERTURA OS DE:</label>
+                    <input type="text" id="abertura">
+                </div>
+                <div class="form-group half-width">
+                    <label for="idOs">ID OS:</label>
+                    <input type="text" id="idOs">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="cliente">CLIENTE:</label>
+                <input type="text" id="cliente">
+            </div>
+
+            <div class="form-group">
+                <label for="descricao">DESCRIÇÃO:</label>
+                <textarea id="descricao" rows="3"></textarea>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>PERÍODO:</label>
+                    <div class="button-group">
+                        <button type="button" class="button-option" id="manha" onclick="selectPeriod('Manhã')">Manhã</button>
+                        <button type="button" class="button-option" id="tarde" onclick="selectPeriod('Tarde')">Tarde</button>
+                        <button type="button" class="button-option" id="qualquer" onclick="selectPeriod('Qualquer')">Qualquer</button>
+                        <button type="button" class="button-option" id="confirmar" onclick="selectPeriod('CONFIRMAR COM CLIENTE')">Confirmar com Cliente</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="data">DATA:</label>
+                    <input type="date" id="data" onclick="this.showPicker()">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="obs">OBS:</label>
+                <textarea id="obs" rows="2"></textarea>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="contato">CONTATO:</label>
+                    <input type="text" id="contato">
+                </div>
+                <div class="form-group">
+                    <label for="endereco">ENDEREÇO:</label>
+                    <input type="text" id="endereco">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-right">
+            <div class="action-buttons">
+                <button onclick="generateText()">Gerar Texto</button>
+                <button onclick="copyToClipboard()">Copiar Texto</button>
+            </div>
+            <textarea id="output" readonly></textarea>
+        </div>
+    </div>
+
+    <div id="popupMessage">Texto copiado para a área de transferência!</div>
+
+    <script>
+        let selectedPeriod = "";
+
+        function selectPeriod(period) {
+            selectedPeriod = period;
+            document.getElementById("manha").classList.toggle("active", period === "Manhã");
+            document.getElementById("tarde").classList.toggle("active", period === "Tarde");
+            document.getElementById("qualquer").classList.toggle("active", period === "Qualquer");
+            document.getElementById("confirmar").classList.toggle("active", period === "CONFIRMAR COM CLIENTE");
+        }
+
+        function formatDate(dateString) {
+            const [year, month, day] = dateString.split("-");
+            return `${day}/${month}/${year}`;
+        }
+
+        function generateText() {
+            const abertura = document.getElementById("abertura").value;
+            const idOs = document.getElementById("idOs").value;
+            const cliente = document.getElementById("cliente").value;
+            const descricao = document.getElementById("descricao").value;
+            const data = formatDate(document.getElementById("data").value);
+            const obs = document.getElementById("obs").value;
+            const contato = document.getElementById("contato").value;
+            const endereco = document.getElementById("endereco").value;
+            const colaborador = document.getElementById("colaborador").value;
+
+            let outputText = "";
+
+            // Condição para adicionar linha de separação no início e no final se ID OS estiver vazio
+            if (!idOs) {
+                outputText += "-------------------------------------------\n";
+            }
+
+            if (idOs) {
+                outputText += `*ABERTURA OS DE: ${abertura}*\n`; // Linha com asteriscos
+            }
+
+            outputText += `ID OS: ${idOs}\n`;
+            outputText += `Cliente: ${cliente}\n`;
+            outputText += `Descrição: ${descricao}\n`;
+            outputText += `Data: ${data}\n`;
+            outputText += `Período: ${selectedPeriod}\n`;
+            outputText += `Obs: ${obs}\n`;
+            outputText += `Contato: ${contato}\n`;
+            outputText += `Endereço: ${endereco}\n`;
+            outputText += `Colaborador: ${colaborador}\n`;
+
+            if (!idOs) {
+                outputText += "-------------------------------------------\n";
+            }
+
+            document.getElementById("output").value = outputText;
+        }
+
+        function copyToClipboard() {
+            const outputText = document.getElementById("output");
+            outputText.select();
+            document.execCommand("copy");
+
+            // Exibir popup de sucesso
+            document.getElementById("popupMessage").style.display = "block";
+            setTimeout(() => {
+                document.getElementById("popupMessage").style.display = "none";
+            }, 1500);
+        }
+
+        function clearFields() {
+            document.getElementById("colaborador").value = "";
+            document.getElementById("abertura").value = "";
+            document.getElementById("idOs").value = "";
+            document.getElementById("cliente").value = "";
+            document.getElementById("descricao").value = "";
+            document.getElementById("data").value = "";
+            document.getElementById("obs").value = "";
+            document.getElementById("contato").value = "";
+            document.getElementById("endereco").value = "";
+            selectedPeriod = "";
+            document.getElementById("output").value = "";
+            document.getElementById("manha").classList.remove("active");
+            document.getElementById("tarde").classList.remove("active");
+            document.getElementById("qualquer").classList.remove("active");
+            document.getElementById("confirmar").classList.remove("active");
+        }
+    </script>
+</body>
+</html>
