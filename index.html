@@ -140,6 +140,11 @@
             display: none;
             font-size: 16px;
         }
+        .instructions {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #666;
+        }
     </style>
 </head>
 <body>
@@ -215,6 +220,16 @@
                 <button onclick="copyToClipboard()">Copiar Texto</button>
             </div>
             <textarea id="output" readonly></textarea>
+            <!-- Adição da área de instruções -->
+            <div class="instructions">
+                <h3>Instruções de Uso:</h3>
+                <p>
+                    1. Quando você gerar texto com ID OS em branco, vai gerar modelos de OS para criar atendimento.<br>
+                    2. Quando abrir atendimento no IXC, vai gerar ID OS, então você insere e gera novamente uma OS para postar no WhatsApp.<br>
+                    3. Não esqueça de sempre confirmar Contato e Endereço com cliente.<br>
+                    4. Use "Limpar Campos" para resetar todos os campos e iniciar uma nova OS.
+                </p>
+            </div>
         </div>
     </div>
 
