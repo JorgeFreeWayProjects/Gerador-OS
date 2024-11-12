@@ -251,22 +251,30 @@
 
             // Condição para adicionar linha de separação no início e no final se ID OS estiver vazio
             if (!idOs) {
-                outputText += "-------------------------------------------\n";
+                outputText += "\n-------------------------------------------\n";
             }
 
             if (idOs) {
                 outputText += `*ABERTURA OS DE: ${abertura}*\n`; // Linha com asteriscos
             }
 
+            if (idOs) {
             outputText += `ID OS: ${idOs}\n`;
+            }
             outputText += `Cliente: ${cliente}\n`;
             outputText += `Descrição: ${descricao}\n`;
             outputText += `Data: ${data}\n`;
             outputText += `Período: ${selectedPeriod}\n`;
+
+            if (obs) {
             outputText += `Obs: ${obs}\n`;
+            }
             outputText += `Contato: ${contato}\n`;
             outputText += `Endereço: ${endereco}\n`;
+
+            if (colaborador) {
             outputText += `Colaborador: ${colaborador}\n`;
+            }
 
             if (!idOs) {
                 outputText += "-------------------------------------------\n";
