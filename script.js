@@ -1,5 +1,9 @@
 let selectedPeriod = "";
 
+function toggleTheme() {
+    document.body.classList.toggle("dark-theme");
+}
+
 function selectPeriod(period) {
     selectedPeriod = period;
     document.getElementById("manha").classList.toggle("active", period === "Manhã");
@@ -131,3 +135,20 @@ function resetTipoOS(inputElement) {
             </select>`;
     }
 }
+
+function toggleTheme() {
+    const body = document.body;
+    if (body.classList.contains('theme-dark')) {
+        body.classList.replace('theme-dark', 'theme-light');
+        localStorage.setItem('theme', 'light');
+    } else {
+        body.classList.replace('theme-light', 'theme-dark');
+        localStorage.setItem('theme', 'dark');
+    }
+}
+
+// Carrega o tema salvo no armazenamento local
+window.addEventListener('load', () => {
+    const savedTheme = localStorage.getItem('theme') || 'dark'; // Padrão para tema escuro
+    document.body.classList.add(`theme-${savedTheme}`);
+});
