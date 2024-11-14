@@ -1,0 +1,139 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #006AA9;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.container {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    max-width: 900px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+}
+.col-left, .col-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+h2 {
+    text-align: center;
+    color: #333333;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+.form-row {
+    display: flex;
+    gap: 10px;
+}
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+input[type="text"], input[type="date"], textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+.half-width {
+    flex: 0.5;
+}
+.clear-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.clear-button {
+    padding: 8px 16px;
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+}
+textarea {
+    resize: vertical;
+    min-height: 50px;
+    max-height: 150px;
+    overflow-y: auto;
+}
+.button-group {
+    display: flex;
+    gap: 10px;
+}
+.button-option {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #e0e0e0;
+    color: #333;
+    transition: background-color 0.3s ease;
+    font-size: 14px;
+}
+.button-option.active {
+    background-color: #4CAF50;
+    color: white;
+}
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+button {
+    flex: 1;
+    padding: 12px;
+    color: white;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+button:hover {
+    background-color: #45a049;
+}
+#output {
+    padding: 15px;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    white-space: pre-wrap;
+    overflow-y: auto;
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    height: 200px;
+}
+#popupMessage {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 4px;
+    display: none;
+    font-size: 16px;
+}
+.instructions {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #666;
+}
