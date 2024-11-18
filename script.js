@@ -124,6 +124,7 @@ function resetTipoOS(inputElement) {
             <select id="abertura" onchange="checkTipoOS()">
                 <option value="">Selecione o Tipo de OS</option>
                 <option value="ATIVAÇÃO">ATIVAÇÃO</option>
+                <option value="ATENUAÇÃO DE FIBRA ÓTICA">ATENUAÇÃO DE FIBRA ÓTICA</option>
                 <option value="ROMPIMENTO">ROMPIMENTO</option>
                 <option value="VISITA TÉCNICA">VISITA TÉCNICA</option>
                 <option value="EXTENSOR - CABO DE REDE">EXTENSOR - CABO DE REDE</option>
