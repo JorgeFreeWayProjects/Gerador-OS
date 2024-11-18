@@ -136,6 +136,40 @@ function resetTipoOS(inputElement) {
     }
 }
 
+function checkColaborador() {
+    const colaboradorSelect = document.getElementById("colaborador");
+
+    if (colaboradorSelect.value === "OUTROS") {
+        colaboradorSelect.outerHTML = `
+            <input type="text" id="colaborador" placeholder="Insira o nome do colaborador" onblur="resetColaborador(this)">
+        `;
+        document.getElementById("colaborador").focus();
+    }
+}
+
+function resetColaborador(inputElement) {
+    if (inputElement.value === "") {
+        inputElement.outerHTML = `
+            <select id="colaborador" onchange="checkColaborador()">
+                <option value="">Selecione o Colaborador</option>
+                <option value="Aline">Aline</option>
+                <option value="Ana Beatriz">Ana Beatriz</option>
+                <option value="Carolina">Carolina</option>
+                <option value="Isabela">Isabela</option>
+                <option value="Jorge">Jorge</option>
+                <option value="Letícia">Letícia</option>
+                <option value="Letícia Sei">Letícia Sei</option>
+                <option value="Luan">Luan</option>
+                <option value="Pedro">Pedro</option>
+                <option value="Thayza">Thayza</option>
+                <option value="Vinícius">Vinícius</option>
+                <option value="OUTROS">OUTROS</option>
+            </select>
+        `;
+    }
+}
+
+
 function toggleTheme() {
     const body = document.body;
     if (body.classList.contains('theme-dark')) {
