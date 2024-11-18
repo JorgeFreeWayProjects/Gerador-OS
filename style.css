@@ -231,6 +231,11 @@ button:hover {
     margin-top: 15px;
     font-size: 14px;
     color: var(--text-color);
+    line-height: 1.5; /* Melhora o espaçamento entre as linhas */
+}
+
+.instructions p {
+    margin: 0 0 10px 0; /* Remove margens extras, mas adiciona espaçamento entre os parágrafos */
 }
 
 /* Botão de alternância de tema */
