@@ -59,9 +59,64 @@ h2 {
     font-size: 20px;
 }
 
+/* Alinha todos os campos na linha */
 .form-row {
     display: flex;
-    gap: 10px;
+    gap: 10px; /* Espaçamento entre os campos */
+    align-items: center; /* Alinha verticalmente todos os elementos na linha */
+}
+
+/* Estilo do campo Colaborador (mais largo) */
+.field-container.colaborador {
+    flex: 3; /* Ocupa mais espaço na linha */
+}
+
+/* Estilo do botão Limpar (mais estreito) */
+.field-container.botao-limpar {
+    flex: 1; /* Ocupa menos espaço na linha */
+}
+
+/* Alinha o botão com os campos de entrada */
+.clear-button {
+    width: 100%;
+    padding: 6px 12px; /* Ajusta o padding interno para alinhamento */
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease;
+    height: 38px; /* Define uma altura fixa para o botão */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px; /* Adiciona uma margem superior para deslocar o botão para baixo */
+}
+
+.clear-button:hover {
+    background-color: #c9302c; /* Cor mais escura no hover */
+}
+
+
+
+/* Estilos gerais para os campos */
+.field-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Permite que os campos cresçam proporcionalmente */
+}
+
+/* Campo TIPO OS mais largo */
+.field-container.tipo-os {
+    flex: 2; /* Ocupa o dobro do espaço do campo ID OS */
+}
+
+/* Campo ID OS mais estreito */
+.field-container.id-os {
+    flex: 1; /* Ocupa metade do espaço do campo TIPO OS */
 }
 
 label {
@@ -86,23 +141,13 @@ select {
 }
 
 .half-width {
-    flex: 0.5;
+    flex: 10;
 }
 
 .clear-row {
     display: flex;
     align-items: center;
     gap: 10px;
-}
-
-.clear-button {
-    padding: 8px 16px;
-    background-color: #d9534f;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 14px;
 }
 
 textarea {
