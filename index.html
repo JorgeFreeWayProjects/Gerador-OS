@@ -11,19 +11,40 @@
         <div class="col-left">
             <h2>Gerador de OS</h2>
             
-            <div class="clear-row">
-                <div class="form-group" style="flex: 1;">
-                    <label for="colaborador">COLABORADOR:</label>
-                    <input type="text" id="colaborador" placeholder="Insira seu nome">
+            <div class="form-row">
+                <!-- Campo Colaborador -->
+                <div class="field-container colaborador">
+                    <label for="colaborador">Colaborador*</label>
+                    <select id="colaborador" onchange="checkColaborador()">
+                        <option value="">Selecione o Colaborador</option>
+                        <option value="Aline">Aline</option>
+                        <option value="Ana Beatriz">Ana Beatriz</option>
+                        <option value="Carolina">Carolina</option>
+                        <option value="Isabela">Isabela</option>
+                        <option value="Jorge">Jorge</option>
+                        <option value="Letícia">Letícia</option>
+                        <option value="Letícia Sei">Letícia Sei</option>
+                        <option value="Luan">Luan</option>
+                        <option value="Pedro">Pedro</option>
+                        <option value="Thayza">Thayza</option>
+                        <option value="Vinícius">Vinícius</option>
+                        <option value="OUTROS">OUTROS</option>
+                    </select>
                 </div>
-                <button class="clear-button" onclick="clearFields()">Limpar Campos</button>
+            
+                <!-- Botão Limpar -->
+                <div class="field-container botao-limpar">
+                    <button class="clear-button" onclick="clearFields()">Limpar</button>
+                </div>
             </div>
+            
 
             <div class="form-row">
-                <div class="form-group half-width">
-                    <label for="abertura">TIPO OS:</label>
+                <!-- Campo TIPO OS -->
+                <div class="field-container tipo-os">
+                    <label for="abertura">Tipo de OS*</label>
                     <select id="abertura" onchange="checkTipoOS()">
-                        <option value=""></option>
+                        <option value="">Selecione o Tipo de OS</option>
                         <option value="ATIVAÇÃO">ATIVAÇÃO</option>
                         <option value="ROMPIMENTO">ROMPIMENTO</option>
                         <option value="VISITA TÉCNICA">VISITA TÉCNICA</option>
@@ -35,14 +56,16 @@
                         <option value="OUTROS">OUTROS</option>
                     </select>
                 </div>
-                <div class="form-group half-width">
-                    <label for="idOs">ID OS:</label>
-                    <input type="text" id="idOs">
+            
+                <!-- Campo ID OS -->
+                <div class="field-container id-os">
+                    <label for="idOs">ID OS</label>
+                    <input type="text" id="idOs"/>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="cliente">CLIENTE:</label>
+                <label for="cliente">CLIENTE*:</label>
                 <input type="text" id="cliente">
             </div>
 
@@ -53,7 +76,7 @@
 
             <div class="form-row">
                 <div class="form-group">
-                    <label>PERÍODO:</label>
+                    <label>PERÍODO*:</label>
                     <div class="button-group">
                         <button type="button" class="button-option" id="manha" onclick="selectPeriod('Manhã')">Manhã</button>
                         <button type="button" class="button-option" id="tarde" onclick="selectPeriod('Tarde')">Tarde</button>
@@ -62,7 +85,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="data">DATA:</label>
+                    <label for="data">DATA*:</label>
                     <input type="date" id="data" onclick="this.showPicker()">
                 </div>
             </div>
@@ -74,11 +97,11 @@
 
             <div class="form-row">
                 <div class="form-group">
-                    <label for="contato">CONTATO:</label>
+                    <label for="contato">CONTATO*:</label>
                     <input type="text" id="contato">
                 </div>
                 <div class="form-group">
-                    <label for="endereco">ENDEREÇO:</label>
+                    <label for="endereco">ENDEREÇO*:</label>
                     <input type="text" id="endereco">
                 </div>
             </div>
@@ -97,7 +120,7 @@
                     2. Quando abrir atendimento no IXC, vai gerar a OS com ID, então você insere no campo ID OS e gera novamente uma OS para enviar no WhatsApp.<br>
                     3. Não esqueça de sempre confirmar Contato e Endereço com cliente.<br>
                     4. Use "Limpar Campos" para resetar todos os campos e iniciar uma nova OS.<br>
-                    5. Colaborador, Tipo OS, Nome do Cliente, periodo e data são obrigatórios!!!
+                    5. Campos com * são obrigatórios!!!
                 </p>
             </div>
         </div>
